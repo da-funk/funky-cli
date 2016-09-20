@@ -1,15 +1,12 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('../mrblib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-tasks = File.expand_path('../tasks', __FILE__)
-$LOAD_PATH.unshift(tasks) unless $LOAD_PATH.include?(tasks)
-
-require 'da_funk/version.rb'
+require 'funky-cli/version.rb'
 
 Gem::Specification.new do |spec|
   spec.name          = "funky-cli"
-  spec.version       = DaFunk::VERSION
+  spec.version       = FunkyCli::VERSION
   spec.authors       = ["Thiago Scalone"]
   spec.email         = ["thiago@cloudwalk.io"]
   spec.summary       = "CLI for DaFunk projects"
@@ -17,10 +14,11 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://github.com/da_funk/funky-cli"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.files         = `git ls-files -z`.split("\x0") + Dir["exe/*"]
+  spec.executables   = Dir["bin/*"].collect { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ["lib"]
+  spec.bindir        = 'bin'
+  spec.require_paths = ["mrblib"]
 
   spec.required_ruby_version = '>= 1.9.3'
 
