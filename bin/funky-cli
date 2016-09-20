@@ -9,6 +9,6 @@ platforms = {
   "x86_64-mingw32" => "x86_64-w64-mingw32.exe"
 }
 
-executable = platforms["#{`uname -m`}-#{`uname -s`.downcase}"]
+executable = platforms["#{`uname -m`.chomp}-#{`uname -s`.chomp.downcase}"]
 
 system("#{File.dirname(File.realpath(__FILE__))}/../exe/#{executable}", *ARGV)
