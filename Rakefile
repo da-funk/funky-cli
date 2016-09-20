@@ -63,6 +63,30 @@ end
 
 desc "Create gem package"
 task :gem => :compile do
+  FileUtils.cd(File.dirname(File.realpath(__FILE__)))
+  FileUtils.rm_rf("./exe")
+  FileUtils.mkdir_p("./exe")
+
+  files = Dir["mruby/build/**/bin/funky-cli*"].inject({}) do |hash, f|
+    arch = f.match(/mruby\/build\/(.*)\/bin/)[1]
+    if arch == "host"
+      hash
+    else
+      if f[-3..-1] ==  "exe"
+        hash[f] = "exe/#{arch}.exe"
+      else
+        hash[f] = "exe/#{arch}"
+      end
+      hash
+    end
+  end
+
+  files.each do |from,to|
+    FileUtils.cp(from, to)
+  end
+
+  FileUtils.chmod 0755, Dir["exe/*"]
+
   sh "gem build funky-cli.gemspec"
 end
 
