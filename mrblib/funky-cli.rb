@@ -6,7 +6,13 @@ def __main__(argv)
     FunkyCli::Setup.run(argv[2])
   when "help"
     FunkyCli::Helper.run
+  when "compile"
+    FunkyCli::Mruby.compile(*argv[2..-1])
+  when "run"
+    FunkyCli::Mruby.run(*argv[2..-1])
+  when "console"
+    FunkyCli::Mruby.console
   else
-    puts "Hello World"
+    FunkyCli::Helper.run
   end
 end
