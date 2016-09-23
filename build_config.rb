@@ -1,5 +1,49 @@
 def gem_config(conf)
-  #conf.gembox 'default'
+  conf.gem :core => "mruby-sprintf"
+  conf.gem :mgem => 'mruby-mtest'
+  conf.gem :core => "mruby-print"
+  conf.gem :core => "mruby-math"
+  conf.gem :core => "mruby-time"
+  conf.gem :core => "mruby-struct"
+  conf.gem :core => "mruby-enum-ext"
+  conf.gem :core => "mruby-string-ext"
+  conf.gem :core => "mruby-numeric-ext"
+  conf.gem :core => "mruby-array-ext"
+  conf.gem :core => "mruby-hash-ext"
+  conf.gem :core => "mruby-range-ext"
+  conf.gem :core => "mruby-proc-ext"
+  conf.gem :core => "mruby-symbol-ext"
+  conf.gem :core => "mruby-random"
+  conf.gem :core => "mruby-object-ext"
+  conf.gem :core => "mruby-objectspace"
+  conf.gem :core => "mruby-fiber"
+  conf.gem :core => "mruby-enumerator"
+  conf.gem :core => "mruby-enum-lazy"
+  conf.gem :core => "mruby-toplevel-ext"
+  conf.gem :core => "mruby-kernel-ext"
+  conf.gem :core => "mruby-eval"
+  conf.gem :core => "mruby-exit"
+
+  conf.gem :github => "scalone/mruby-hs-regexp"
+  conf.gem :mgem => "mruby-io"
+  conf.gem :mgem => "mruby-dir"
+  conf.gem :mgem => "mruby-tempfile"
+  conf.gem :github => "iij/mruby-require"
+  conf.gem :mgem => "mruby-socket"
+  conf.gem :mgem => "mruby-pack"
+  conf.gem :mgem => "mruby-polarssl"
+  #conf.gem :github => "sadasant/mruby-qrcode", :check_sum => "83205181508fe77f9fa7e556002334e439bcbc7b"
+  conf.gem :github => "scalone/mruby-miniz"
+  conf.gem :mgem => "mruby-sleep"
+  conf.gem :mgem => "mruby-msgpack"
+  conf.gem :mgem => "mruby-json"
+  conf.gem :github => "scalone/mruby-context"
+  conf.gem :github => "scalone/mruby-ripemd"
+  conf.gem :github => "scalone/mruby-hmac"
+  conf.gem :mgem => "mruby-sha2"
+  conf.gem :mgem => "mruby-sha1"
+  conf.gem :mgem => "mruby-base58"
+  conf.gem :mgem => "mruby-bignum"
 
   # be sure to include this gem (the cli app)
   conf.gem File.expand_path(File.dirname(__FILE__))
@@ -12,7 +56,10 @@ MRuby::Build.new do |conf|
   conf.enable_debug
   conf.enable_test
 
-  gem_config(conf)
+  conf.gem :mgem => 'mruby-mtest'
+  conf.gem :core => "mruby-print"
+
+  #gem_config(conf)
 end
 
 MRuby::Build.new('x86_64-pc-linux-gnu') do |conf|
@@ -92,3 +139,4 @@ MRuby::CrossBuild.new('i686-w64-mingw32') do |conf|
 
   gem_config(conf)
 end
+
