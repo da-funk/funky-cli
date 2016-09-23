@@ -1,6 +1,9 @@
 def __main__(argv)
-  if argv[1] == "version"
+  case argv[1]
+  when "version"
     puts "v#{FunkyCli::VERSION}"
+  when "help"
+    FunkyCli::Helper.run
   else
     puts "Hello World"
   end
