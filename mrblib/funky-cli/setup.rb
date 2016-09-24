@@ -72,7 +72,7 @@ Bundler.require(:default)
 
 DaFunk::RakeTask.new do |t|
   t.mrbc  = "funky-cli compile"
-  t.mruby = "funky-cli run"
+  t.mruby = "funky-cli run -b"
 end
 RAKEFILE
     end
