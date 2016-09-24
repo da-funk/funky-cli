@@ -56,6 +56,7 @@ IGNORE
 source 'https://rubygems.org'
 
 gem 'da_funk'
+gem 'funky-cli'
 gem 'rake'
 GEMFILE
     end
